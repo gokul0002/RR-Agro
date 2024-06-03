@@ -1,0 +1,95 @@
+/* address-form.component.css */
+
+.heading{
+ text-align: center;
+ color: #4caf50;
+}
+form {
+  width: 300px;
+  margin:  70px auto;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #aaaaaa;
+  cursor: not-allowed;
+}
+
+/* Optional: Add a simple hover effect for input fields */
+input:hover {
+  border-color: #4caf50;
+}
+
+
+
+/* Notification */
+.notification {
+  position: fixed;
+  width: 100%;
+  /* background-color: green; */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+@media (max-width: 480px) {
+  .notification {
+         width: 85%;
+         /* font-size: 10px; */
+         margin: 0 auto;
+         /* margin-top: 30px; */
+  }
+
+  .input{
+    width: 50%;
+  }
+}
+
+.success{
+  background-color: green;
+}
+
+.error{
+  background-color: red;
+}

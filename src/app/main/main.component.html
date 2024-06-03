@@ -1,0 +1,386 @@
+<!-- 
+ <div class="header">
+    <img style="height: 100px; width: 100px;" src="https://static.vecteezy.com/system/resources/thumbnails/002/308/917/small/rice-illustration-vector.jpg" alt="">
+    <h1>R.R. AGRO FOODS</h1>
+    <h4>Periya Andavar Thunai</h4>
+    <div class="address">
+        <p>Dealers in EDIBLE OILS, OIL SEEDS, PADDY & RICE</p>
+        <p>No.78, Vanigar Street, Kanchipuram - 631 501.</p>
+        <p>Kanchipuram Dt. Tamilnadu</p>
+      </div>
+  </div> 
+   -->
+<!-- 
+    <div class="notification">
+      <span class="message">Your message here</span>
+      <button class="close-button">X</button>
+    </div> -->
+  
+    <div class="notification" *ngIf="isVisible" [ngStyle]="isSucess ? {'background-color': 'green'} : {'background-color': 'red'}" >
+      <span class="message">{{message}}</span>
+      <!-- <button class="close-button">X</button> -->
+    </div>
+    
+
+<nav>
+  <div class="logo">
+    <img style="height: 30px; width: 30px;" src="../assets/photo-output.jpg" alt="Logo">
+
+  </div>
+  <span style="color: white;" > R.R.AGRO FOODS</span>
+  <div class="buttons">
+    <a href="#" class="button"> <i class="fa-solid fa-house-user"></i>Home</a>
+    <a href="#" class="button" routerLink="/newcustomer"> <i class="fa-solid fa-person-military-pointing"></i>New
+      Customer</a>
+  </div>
+</nav>
+
+<!-- <hr style="border: 0px 0px 0px 2px;"> -->
+
+
+
+<!-- <button style="padding: 10px;" (click)="getData()"> GET DETAILS  </button> -->
+
+
+
+<body #new >
+
+<div >
+  <div class="wholeBody" >
+    <table class="heightInc">
+
+      <table>
+
+        <tr>
+          <td style="margin-top: 0px;">
+            <div>
+              <div style="font-size: xx-large; font-weight: bolder; ">RR Agro Foods</div>
+              Dealers in EDIBLE OILS, OIL SEEDS, PADDY & RICE <br>
+              <span style="font-weight: bolder;">CONTACT: 987654321</span> <br>
+              <span style="font-weight: bolder;">GST:33ASDDJFKLDJ12</span>
+            </div>
+          </td>
+
+          <td>
+            <div>
+              <img style="height: 100px; width: 100px;"
+                src="../assets/NewAmmanPicture.png" alt="">
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table style="height: 50px;">
+        <tr>
+          <div style="display: flex; justify-content: space-between; font-size: larger; font-weight: ;">
+            <span> Invoice No: {{Bill_no}}</span>
+            <span>Invoice Date : {{currentDate}}</span>
+          </div>
+
+        </tr>
+      </table>
+      
+      <table class="DetailsTable heightInc" >
+        <tr>
+          <td *ngFor="let CD of newArrayForCustomerDetails">
+            <h3>Customer Details</h3>
+            <b> {{CD.CustomerName}} </b> <br>
+             {{CD.Adress}} <br>
+             Mobile : {{CD.Contact}} <br>
+             GST : {{CD.GstIn}} <br>
+          </td>
+
+          <td *ngFor="let CD of newArrayForCustomerDetails">
+            <h3>Delivery Address </h3>
+             {{CD.Adress}} <br>
+             Mobile: {{CD.Contact}} <br>
+            <!-- License NO: {{CD.LicenceNumber}} <br>   -->
+          </td>
+
+          <td>
+            <h3>Bank Details</h3>
+            OUR BANK : HDFC BANK, Kanchipuram <br>
+            A/c No: 50200049287118 <br>
+            IFSC Code: HDFC0000879 <br>
+          </td>
+        </tr>
+      </table>
+      <table class="TotalPriceBox" >
+        <thead>
+            <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">Particulars</th>
+                <th scope="col">HSN</th>
+                <th scope="col">Weight/Bag</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Amount</th>
+                <th scope="col" class="sgst">SGST(0%)</th>
+                <th scope="col" class="sgst">CGST(0%)</th>
+                <th scope="col">Sub Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let productDetailss of PRODUCTARRAY">
+                <td data-label="S.no">{{productDetailss.serialNumber}}.</td>
+                <td data-label="Particulars">{{productDetailss.particular}}</td>
+                <td data-label="HSN">{{productDetailss.hsn}}</td>
+                <td> {{productDetails.weightPerBag}} </td>
+                <td data-label="Quantity">{{productDetailss.quantity}}</td>
+                <td data-label="Unit Price">{{productDetailss.unitPrice}}</td>
+                <td data-label="Amount">{{productDetailss.amt}}</td>
+                <td data-label="SGST(0%)" class="sgst">0</td>
+                <td data-label="CGST(0%)" class="sgst">0</td>
+                <td data-label="Sub Total"> {{productDetailss.amt}} </td>
+            </tr>
+            <tr>
+                <td colspan="9" data-label="Total">Total</td>           
+                <td data-label="Sub Total"> {{grandTotal}}  </td>
+            </tr>
+            <tr>
+              <td colspan="5"></td>
+              <td colspan="2" data-label="Total">Total Amount in words</td>           
+              <td data-label="Sub Total" colspan="3" > <span  style="font-size: 9px;" class="amtInwords">{{amountInwords}}</span>  </td>
+          </tr>
+            
+        </tbody>
+        
+    </table>
+  
+      <table class="heightInc" >
+        <tr *ngFor="let LD of DRIVERANDLORRYDETAILS"> 
+          <td >
+            <h3>Lorry Details</h3>
+            Broker name : {{LD.BrokerName}} <br>
+            Broker Mobile : {{LD.BrokerMobile}} <br>
+            Lorry No: {{LD.LorryNumber}} <br>
+          </td>
+
+          <td>
+            <h3>Driver Details</h3>
+            Driver Name : {{LD.DriveName}} <br>
+            Driver Mobile: {{LD.DriverMobile}} <br>
+            License NO: {{LD.LicenceNumber}} <br>
+          </td>
+        </tr>
+      </table>
+
+      <table class="heightInc">
+        <h3>Terms and Conditions</h3>
+        <div>
+          Terms and Conditions” is the document governing the contractual relationship between the provider of a service
+          and its user. On the web, this document is often also called “Terms of Service” (ToS), “Terms of Use“, EULA
+          (“End-User License Agreement”), “General Conditions” or “Legal Notes”.
+        </div>
+      </table>
+      <!-- <hr style="border-bottom: 2px solid black;"> -->
+
+
+      <div class="heightInc" style="display: flex; justify-content: space-between;">
+        <span style="font-weight: bolder;">Customer's Signature</span>
+        <span> <span style="font-weight: bolder;">RR AGRO FOODS</span> </span>
+      </div>
+      <br>
+
+      <div style="display: flex; justify-content: end;">
+        <span>
+          Authorised Signature
+        </span>
+      </div>
+
+
+
+
+    </table>
+  </div>
+</div>
+</body>
+
+
+
+
+
+
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 40px; ">
+  <button (click)="generatePDF() " style="width: 30%; text-align: center;">Generate PDF</button>
+</div>
+
+
+<hr style="margin-top: 40px;">
+
+<div>
+  <div  class="EnterName">
+    <div >
+     <label for="inputValue" >Enter Name:</label>
+     <input  type="text" id="inputValue" name="inputValue" [(ngModel)]="customerName" required> 
+    </div>
+     
+    <div style="display: flex; align-items: center" >
+     <button (click)="getCutomerDetails()"  > Get data </button>
+   
+    </div>
+    </div>
+   
+    <!-- <div class="EnterName" >
+     <div >
+       <label for="inputValue" >Enter INVOICE Number:</label>
+       <input  type="text" id="inputValue" name="inputValue" [(ngModel)]="customerName" required> 
+      </div>
+     
+      <div style="display: flex; align-items: center;" >
+       <button (click)="getCutomerDetails()"  > Get data </button>
+    </div>
+     
+   
+   </div> -->
+</div>
+
+<hr style="margin-top: 40px;">
+
+<!-- PROUDCT DETAILS -->
+<h1 style="text-align: center; margin-top: 70px;" class="EnterProductDetails"> Enter Product Details</h1>
+<div  class="ProductDetails">
+
+  <form #myForm="ngForm" (ngSubmit)="SubmitProductDetails(myForm.value);">
+    <div>
+      <!-- <label for="inputValue">Enter GST No:</label>
+      <input type="text" id="inputValue" name="inputValue" [(ngModel)]="model.gstNo" required> -->
+
+      <label for="Particular">Particular:</label>
+      <input type="text" id="Particular" name="particular" [(ngModel)]="productDetails.particular"  required>
+
+      <label for="Rate_per_kg">Weight/Bag:</label>
+      <input type="text" id="Rate_per_kg" name="weightPerBag" [(ngModel)]="productDetails.weightPerBag"  required>
+
+      <label for="Quantity">Quantity:</label>
+      <input type="text" id="Quantity" name="quantity"  [(ngModel)]="productDetails.quantity" required>
+
+      <label for="Quantity">HSN:</label>
+      <input type="text" id="Quantity" name="hsn"  [(ngModel)]="productDetails.hsn" required>
+
+      <!-- <label for="Amount">Amount:</label>
+      <input type="text" id="Amount" name="Amount"  [(ngModel)]="productDetails.amount" required> -->
+    </div>
+
+    <div>
+
+      <label for="Amount">Unit Price:</label>
+      <input type="text" id="Amount" name="unitPrice" [(ngModel)]="productDetails.unitPrice"  required>
+
+      <label for="Amount">SGST(0%):</label>
+      <input type="text" id="Amount" name="sgst" [(ngModel)]="productDetails.sgst"   required>
+      <!-- 
+      <label for="Driver_Cell_No">Bill No: </label>
+      <input type="text" id="Driver_Cell_No" name="Driver_Cell_No" [(ngModel)]="model.Bill_no" required> -->
+
+      <label for="Driver_Cell_No">CGST(0%):</label>
+      <input type="text" id="Driver_Cell_No" name="cgst" [(ngModel)]="productDetails.cgst"   required>
+
+      <!-- <label for="Driver_Cell_No">DL No:</label>
+      <input type="text" id="Driver_Cell_No" name="Driver_Cell_No" [(ngModel)]="model.DL_no" required> -->
+
+      <label for="Date">Date:</label>
+      <input type="date" id="Driver_Cell_No" name="date" [(ngModel)]="productDetails.date"  required>
+    </div>
+
+    <button type="submit"  [disabled]="!myForm.form.valid"  [ngStyle]="{'opacity': myForm.form.valid ? '' : '0.5'}" >Submit</button>
+    <!-- <button (click)="resetForm()">Reset</button> -->
+  </form>
+
+</div>
+
+<hr >
+<!-- DRIVER DETAILS -->
+<h1 style="text-align: center; margin-top: 70px; margin-bottom: 10px; " class="EnterDriverDetails"> Enter Driver Details</h1>
+<div  class="DriverDetails">
+
+  <form style="width: 200px;" #DriverDetailss="ngForm" (ngSubmit)="SubmitLorryAndDriverDetails(DriverDetailss.value);">
+    <div>
+
+      <h3>Driver Details </h3>
+      <label for="Particular">Driver Name:</label>
+      <input type="text" id="Particular" name="DriveName" [(ngModel)]="DriverDetails.DriveName" required>
+
+      <label for="Rate_per_kg">Drive Mobile Number:</label>
+      <input type="text" id="Rate_per_kg" name="DriverMobile" [(ngModel)]="DriverDetails.DriverMobile" type="number" required>
+
+      <label for="Quantity">License Number:</label>
+      <input type="text" id="Quantity" name="LicenceNumber" [(ngModel)]="DriverDetails.LicenceNumber" required>
+
+      <button style="height: 50px; width: 200px;" type="submit"  [disabled]="!DriverDetailss.form.valid" [ngStyle]="{'opacity': DriverDetailss.form.valid ? '' : '0.5'}">Submit</button>
+
+      </div>
+
+    <!-- <div>
+
+      <h3> Lorry Details </h3>
+      <label for="Amount">Broker Name</label>
+      <input type="text" id="Amount" name="BrokerName" [(ngModel)]="LorryDetails.BrokerName" required>
+
+      <label for="Amount">Broker Mobile Number</label>
+      <input type="text" id="Amount" name="BrokerMobile" [(ngModel)]="LorryDetails.BrokerMobile" required>
+
+
+      <label for="Driver_Cell_No">Lorry Number</label>
+      <input type="text" id="Driver_Cell_No" name="LorryNumber" [(ngModel)]="LorryDetails.LorryNumber" required>
+
+
+
+    </div> -->
+
+
+
+  </form>
+
+</div>
+
+<hr>
+   
+    <div class="deleteRow" >
+     <div >
+       <label for="inputValue" >Enter row number to delete:</label>
+       <input  type="text" id="inputValue" name="inputValue" [(ngModel)]="rownumber" required> 
+      </div>
+     
+      <div style="display: flex; align-items: center; " >
+       <button  (click)="deleteRow()" style="background-color: rgba(207, 18, 18, 0.841);" > Delete Row</button>
+    </div>
+     
+   
+   </div>
+
+   <hr>
+      
+   <div class="invoiceNumber" >
+    <div >
+      <label for="inputValue" >Enter invoice number : </label>
+      <input  type="text" id="inputValue" name="invoiceNumber" [(ngModel)]="invoiceNumber" required> 
+     </div>
+    
+     <div style="display: flex; align-items: center; " >
+      <button (click)="resetInvoicenumber()" style="background-color: green" > Add invoice number</button>
+   </div>
+    
+  
+  </div>
+
+<!-- <a href="gokulsaran29@gmail.com">I love star wars</a>
+
+<h2>Send e-mail to someone@example.com:</h2>
+
+<form action="mailto:someone@example.com" method="post" enctype="text/plain">
+Name:<br>
+<input type="text" name="name"><br>
+E-mail:<br>
+<input type="text" name="mail"><br>
+Comment:<br>
+<input type="text" name="comment" size="50"><br><br>
+<input type="submit" value="Send">
+<input type="reset" value="Reset">
+</form> -->
+
+
+
+
+
+

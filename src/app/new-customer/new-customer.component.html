@@ -1,0 +1,37 @@
+
+  
+
+  <div class="notification" *ngIf="isVisible" [ngStyle]="isSucess ? {'background-color': 'green'} : {'background-color': 'red'}" >
+    <span class="message">{{message}}</span>
+    <!-- <button class="close-button">X</button> -->
+  </div>
+
+<!-- address-form.component.html --> 
+
+  <form #addNew="ngForm" (ngSubmit)="addNewCustomer(addNew.value)"  #formRef>
+
+<h2 class="heading" > Add Customer Here</h2> 
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name"  name="CustomerName" ngModel  required>
+      </div>
+    
+      <div>
+        <label for="street">Address:</label>
+        <input type="text" id="street" name="Adress" ngModel  required>
+      </div>
+    
+      <div>
+        <label for="gstIn">GST IN:</label>
+        <input type="text" id="gstIn"  pattern="[0-9]{8}" name="GstIn" ngModel required>
+      </div>
+    
+      <div>
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" pattern="[0-9]{9}" name="Contact" ngModel required>
+      </div>
+    
+      <button type="submit" >Submit</button>
+    </form>
+    
+

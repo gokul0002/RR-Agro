@@ -1,0 +1,344 @@
+<nav>
+  <div class="logo">
+    <img style="height: 30px; width: 30px;" src="../assets/photo-output.jpg" alt="Logo">
+
+  </div>
+  <span style="color: white;" > R.R.AGRO FOODS</span>
+  <div class="buttons">
+    <a href="#" class="button"> <i class="fa-solid fa-house-user"></i>Home</a>
+    <a href="#" class="button" routerLink="/newcustomer"> <i class="fa-solid fa-person-military-pointing"></i>New
+      Customer</a>
+  </div>
+</nav>
+
+
+<div style="text-align: center;">
+  <label for="inputValue">Enter Date:</label>
+<input style="width: 300px; " type="date" id="inputValue" name="inputValue" [(ngModel)]="Inputdate" required> <br>
+<button (click)="fetchDataByDate(Inputdate)" style="width: auto;" > Get data </button>
+</div>
+
+
+
+
+
+
+
+<body     *ngFor="let orderDetails of DBorderDetails" >
+
+  <div >
+    <div class="wholeBody" >
+      <table>
+  
+        <table>
+  
+          <tr>
+            <td style="margin-top: 0px;">
+              <div>
+                <div style="font-size: x-large; font-weight: bolder; ">RR Agro Foods</div>
+                Dealers in EDIBLE OILS, OIL SEEDS, PADDY & RICE <br>
+                <span style="font-weight: bolder;">CONTACT: 987654321</span> <br>
+                <span style="font-weight: bolder;">GST:33ASDDJFKLDJ12</span>
+              </div>
+            </td>
+  
+            <td>
+              <div>
+                <img style="height: 100px; width: 100px;"
+                  src="../assets/NewAmmanPicture.png" alt="">
+              </div>
+            </td>
+          </tr>
+        </table>
+  
+        <table >
+          <tr>
+            <div style="display: flex; justify-content: space-between; font-size: larger; font-weight: ;">
+              <span> Invoice No:{{orderDetails.invoiceNumber}}  </span>
+              <span>Invoice Date : {{orderDetails.Date}}   </span>
+            </div>
+  
+          </tr>
+        </table>
+        
+        <table class="DetailsTable" >
+          <tr>
+            <td>
+              <h3>Customer Details</h3>
+              Bank name : OWN <br>
+              Broker Mobile : 987654321 <br>
+              Lorry No: TN 32 P 1234 <br>
+            </td>
+            <!-- *ngFor="let driver of DRIVERANDLORRYDETAILS" -->
+            <td >
+              <h3>Driver Address </h3>
+              Driver Name : {{orderDetails.DriverDetails.DriveName}} <br>
+              Driver Mobile: {{orderDetails.DriverDetails.DriverMobile}}  <br>
+              License NO: {{orderDetails.DriverDetails.LicenceNumber}} <br>
+            </td>
+  
+            <td>
+              <h3>Bank Details</h3>
+              OUR BANK : HDFC BANK, Kanchipuram <br>
+              A/c No: 50200049287118 <br>
+              IFSC Code: HDFC0000879 <br>
+            </td>
+          </tr>
+        </table>
+        <table class="TotalPriceBox" >
+          <thead>
+              <tr>
+                  <th scope="col">S.no</th>
+                  <th scope="col">Particulars</th>
+                  <th scope="col">HSN</th>
+                  <th scope="col">Weight/Bag</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Unit Price</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">SGST(0%)</th>
+                  <th scope="col">CGST(0%)</th>
+                  <th scope="col">Sub Total</th>
+              </tr>
+          </thead>
+          <tbody>
+            <!-- *ngFor="let productDetailss of PRODUCTARRAY" -->
+            <!-- *ngFor="let orderDetails of productDetailsArray"  -->
+            
+              <tr *ngFor="let orderDetails of DBorderDetails" >
+                  <td data-label="S.no">{{orderDetails.serialNumber}}.</td>
+                  <td data-label="Particulars">{{orderDetails.productDetails.particular}}</td>
+                  <td data-label="HSN">{{orderDetails.productDetails.hsn}}</td>
+                  <td> {{orderDetails.productDetails.weightPerBag}} </td>
+                  <td data-label="Quantity">{{orderDetails.productDetails.quantity}}</td>
+                  <td data-label="Unit Price">{{orderDetails.productDetails.unitPrice}}</td>
+                  <td data-label="Amount">{{orderDetails.productDetails.amt}}</td>
+                  <td data-label="SGST(0%)">0</td>
+                  <td data-label="CGST(0%)">0</td>
+                  <td data-label="Sub Total">{{orderDetails.productDetails.amt}}</td> 
+              </tr>
+              <tr>
+                  <td colspan="9" data-label="Total">Total</td>           
+                  <td data-label="Sub Total"> {{orderDetails.GrandTotal}}  </td>
+              </tr>
+
+              <tr>
+                <td colspan="5"></td>
+                <td colspan="2" data-label="Total">Total Amount in words</td>           
+                <td data-label="Sub Total" colspan="3" style="font-size: large; font-weight: bolder;"> {{orderDetails.GrandTotalInWords}}  </td>
+            </tr>
+          </tbody>
+      </table>
+      <!-- *ngFor="let LD of DRIVERANDLORRYDETAILS" -->
+        <table  >
+          <tr > 
+            <td >
+              <h3>Lorry Details</h3>
+              Broker name :  <br>
+              Broker Mobile :  <br>
+              Lorry No:  <br>
+            </td>
+  
+            <td>
+              <h3>Driver Details</h3>
+              Driver Name : {{orderDetails.DriverDetails.DriveName}} <br>
+              Driver Mobile: {{orderDetails.DriverDetails.DriverMobile}}  <br>
+              License NO: {{orderDetails.DriverDetails.LicenceNumber}} <br>
+            </td>
+          </tr>
+        </table>
+  
+        <table>
+          <h3>Terms and Conditions</h3>
+          <div>
+            Terms and Conditions” is the document governing the contractual relationship between the provider of a service
+            and its user. On the web, this document is often also called “Terms of Service” (ToS), “Terms of Use“, EULA
+            (“End-User License Agreement”), “General Conditions” or “Legal Notes”.
+          </div>
+        </table>
+        <!-- <hr style="border-bottom: 2px solid black;"> -->
+  
+  
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bolder;">Customer's Signature</span>
+          <span> <span style="font-weight: bolder;">RR AGRO FOODS</span> </span>
+        </div>
+        <br>
+  
+        <div style="display: flex; justify-content: end;">
+          <span>
+            Authorised Signature
+          </span>
+        </div>
+  
+  
+  
+  
+      </table>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <button style="width: 30%; text-align: center;" (click)="generatePDF(orderDetails)" >Generate PDF</button>
+  </div>
+  </body>
+
+  
+
+
+
+  
+<body #new *ngFor="let orderDetails of detailsToBePrinted" >
+
+  <div >
+    <div class="wholeBody" >
+      <table>
+  
+        <table>
+  
+          <tr>
+            <td style="margin-top: 0px;">
+              <div>
+                <div style="font-size: x-large; font-weight: bolder; ">RR Agro Foods</div>
+                Dealers in EDIBLE OILS, OIL SEEDS, PADDY & RICE <br>
+                <span style="font-weight: bolder;">CONTACT: 987654321</span> <br>
+                <span style="font-weight: bolder;">GST:33ASDDJFKLDJ12</span>
+              </div>
+            </td>
+  
+            <td>
+              <div>
+                <img style="height: 100px; width: 100px;"
+                  src="../assets/NewAmmanPicture.png" alt="">
+              </div>
+            </td>
+          </tr>
+        </table>
+  
+        <table >
+          <tr>
+            <div style="display: flex; justify-content: space-between; font-size: larger; font-weight: ;">
+              <span> Invoice No:{{orderDetails.invoiceNumber}}  </span>
+              <span>Invoice Date : {{orderDetails.Date}}   </span>
+            </div>
+  
+          </tr>
+        </table>
+        
+        <table class="DetailsTable" >
+          <tr>
+            <td>
+              <h3>Customer Details</h3>
+              Bank name : OWN <br>
+              Broker Mobile : 987654321 <br>
+              Lorry No: TN 32 P 1234 <br>
+            </td>
+            <!-- *ngFor="let driver of DRIVERANDLORRYDETAILS" -->
+            <td >
+              <h3>Driver Address </h3>
+              Driver Name : {{orderDetails.DriverDetails.DriveName}} <br>
+              Driver Mobile: {{orderDetails.DriverDetails.DriverMobile}}  <br>
+              License NO: {{orderDetails.DriverDetails.LicenceNumber}} <br>
+            </td>
+  
+            <td>
+              <h3>Bank Details</h3>
+              OUR BANK : HDFC BANK, Kanchipuram <br>
+              A/c No: 50200049287118 <br>
+              IFSC Code: HDFC0000879 <br>
+            </td>
+          </tr>
+        </table>
+        <table class="TotalPriceBox" >
+          <thead>
+              <tr>
+                  <th scope="col">S.no</th>
+                  <th scope="col">Particulars</th>
+                  <th scope="col">HSN</th>
+                  <th scope="col">Weight/Bag</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Unit Price</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">SGST(0%)</th>
+                  <th scope="col">CGST(0%)</th>
+                  <th scope="col">Sub Total</th>
+              </tr>
+          </thead>
+          <tbody>
+            <!-- *ngFor="let productDetailss of PRODUCTARRAY" -->
+              <tr *ngFor="let orderDetails of productDetailsArray" >
+                  <td data-label="S.no">{{orderDetails.serialNumber}}.</td>
+                  <td data-label="Particulars">{{orderDetails.particular}}</td>
+                  <td data-label="HSN">{{orderDetails.hsn}}</td>
+                  <td> {{orderDetails.weightPerBag}} </td>
+                  <td data-label="Quantity">{{orderDetails.quantity}}</td>
+                  <td data-label="Unit Price">{{orderDetails.unitPrice}}</td>
+                  <td data-label="Amount">{{orderDetails.amt}}</td>
+                  <td data-label="SGST(0%)">0</td>
+                  <td data-label="CGST(0%)">0</td>
+                  <td data-label="Sub Total">{{orderDetails.amt}}</td> 
+              </tr>
+              <tr>
+                  <td colspan="9" data-label="Total">Total</td>           
+                  <td data-label="Sub Total"> {{orderDetails.GrandTotal}}  </td>
+              </tr>
+
+              <tr>
+                <td colspan="5"></td>
+                <td colspan="2" data-label="Total">Total Amount in words</td>           
+                <td data-label="Sub Total" colspan="3" style="font-size: large; font-weight: bolder;"> {{orderDetails.GrandTotalInWords}}  </td>
+            </tr>
+          </tbody>
+      </table>
+      <!-- *ngFor="let LD of DRIVERANDLORRYDETAILS" -->
+        <table  >
+          <tr > 
+            <td >
+              <h3>Lorry Details</h3>
+              Broker name :  <br>
+              Broker Mobile :  <br>
+              Lorry No:  <br>
+            </td>
+  
+            <td>
+              <h3>Driver Details</h3>
+              Driver Name : {{orderDetails.DriverDetails.DriveName}} <br>
+              Driver Mobile: {{orderDetails.DriverDetails.DriverMobile}}  <br>
+              License NO: {{orderDetails.DriverDetails.LicenceNumber}} <br>
+            </td>
+          </tr>
+        </table>
+  
+        <table>
+          <h3>Terms and Conditions</h3>
+          <div>
+            Terms and Conditions” is the document governing the contractual relationship between the provider of a service
+            and its user. On the web, this document is often also called “Terms of Service” (ToS), “Terms of Use“, EULA
+            (“End-User License Agreement”), “General Conditions” or “Legal Notes”.
+          </div>
+        </table>
+        <!-- <hr style="border-bottom: 2px solid black;"> -->
+  
+  
+        <div style="display: flex; justify-content: space-between;">
+          <span style="font-weight: bolder;">Customer's Signature</span>
+          <span> <span style="font-weight: bolder;">RR AGRO FOODS</span> </span>
+        </div>
+        <br>
+  
+        <div style="display: flex; justify-content: end;">
+          <span>
+            Authorised Signature
+          </span>
+        </div>
+  
+  
+  
+  
+      </table>
+    </div>
+  </div>
+
+  <!-- <div style="display: flex; justify-content: center; align-items: center;">
+    <button style="width: 30%; text-align: center;" (click)="generatePDF(orderDetails)" >Generate PDF</button>
+  </div> -->
+  </body>
